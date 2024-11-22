@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Please Log In</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto Mono', monospace;
+      background-color: #0d0d0d;
+      color: #e6e6e6;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #00ff00;
+    }
+
+    input, select, button {
+      background-color: #1a1a1a;
+      border: 1px solid #333;
+      color: #e6e6e6;
+      padding: 8px;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    input::placeholder {
+      color: #666;
+    }
+
+    input:focus, select:focus, button:hover {
+      border-color: #00ffff;
+      outline: none;
+      box-shadow: 0 0 10px #00ffff;
+    }
+
+    button {
+      cursor: pointer;
+      background-color: #333;
+      font-weight: bold;
+    }
+
+    table {
+      width: 90%;
+      margin: 0 auto 20px auto;
+      border-collapse: collapse;
+      background-color: #1a1a1a;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #333;
+      color: #e6e6e6;
+    }
+
+    th {
+      background-color: #333;
+      color: #00ffff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #2a2a2a;
+    }
+
+    tr:hover {
+      background-color: #00ffff;
+      color: #000;
+      transition: all 0.2s;
+    }
+
+    a {
+      color: #00ff00;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #ff00ff;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0;
+    }
+
+    li {
+      margin: 0;
+    }
+
+    .top-right-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ff0000;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .top-right-button:hover {
+      box-shadow: 0 0 10px #ff0000;
+    }
+
+    @media (max-width: 768px) {
+      table, form {
+        width: 100%;
+      }
+
+      input, select, button {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+<h1>Please Log In</h1>
+<div th:if="${param.error}">
+  Invalid username and password.</div>
+<div th:if="${param.logout}">
+  You have been logged out.</div>
+<form th:action="@{/login}" method="post">
+  <div>
+    <input type="text" name="username" placeholder="Login"/>
+  </div>
+  <div>
+    <input type="password" name="password" placeholder="Password"/>
+  </div>
+  <input type="submit" value="Log in" />
+</form>
+<a href="/registration">registration</a>
+</body>
+</html>
