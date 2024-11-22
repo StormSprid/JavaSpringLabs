@@ -99,7 +99,7 @@ public class AdminController {
                 String email = task.getUser().getEmail();
                 String subject = "Task Notification: " + task.getTitle();
                 String message = String.format(
-                        "Good Day, %s,\n\nAdmin give a task to you:\n\nTitle: %s\nDescription: %s\nDue Date: %s\n\nBest regards,\nAdmin",
+                        "Good Day, %s!\n\nAdmin give a task to you:\n\nTitle: %s\nDescription: %s\nDue Date: %s\n\nBest regards,\nAdmin",
                         task.getUser().getName(), task.getTitle(), task.getDescription(), task.getDueDate()
                 );
 
