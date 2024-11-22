@@ -4,14 +4,24 @@ import org.springframework.stereotype.Service;
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.Properties;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import stormsprid.emilspring.security.EmailConfig;
+
+import java.io.File;
+import java.io.IOException;
 
 @Service
 public class EmailService {
+    ObjectMapper objectMapper = new ObjectMapper();
+    EmailConfig emailConfig = objectMapper.readValue(new File("settings.json"), EmailConfig.class);
 
-    private final String host = "smtp.gmail.com";
-    private final int port = 587;
-    private final String username = "emil333.mem@gmail.com";
-    private final String password = "hpcs xtmg lijh zobc ";
+    private final String host = emailConfig.getHost();
+    private final int port = emailConfig.getPort();
+    private final String username = emailConfig.getUsername();
+    private final String password = emailConfig.getPassword();
+
+    public EmailService() throws IOException {
+    }
 
     public void sendEmail(String to, String subject, String messageContent) {
         // Настройки SMTP сервера
